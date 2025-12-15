@@ -1,0 +1,13 @@
+prometheus:
+  prometheusSpec:
+    additionalScrapeConfigs:
+      - job_name: "taskops-backend"
+        metrics_path: /metrics
+        static_configs:
+          - targets:
+              - backend.taskops.svc.cluster.local:5000
+
+grafana:
+  adminPassword: "TaskOpsAdmin123"
+  service:
+    type: LoadBalancer
